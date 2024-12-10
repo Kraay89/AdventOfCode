@@ -1,7 +1,7 @@
 # ============================================================================#
 # IMPORTS.....................................................................#
 # ============================================================================#
-import os, sys
+import os, sys, re
 
 # ============================================================================#
 # FINDING AND READING DAY-INPUT INTO A LIST OF INPUT LINES....................#
@@ -33,35 +33,20 @@ except FileNotFoundError:
 # ============================================================================#
 # Part One....................................................................#
 # ============================================================================#
-safeReports = 0
+
+total =0
+for instructionSubset in InputLines:
+    regex = re.compile("(?:mul\((\d{1,3}),(\d{1,3})\))")
+    matches = re.findall(regex, instructionSubset)
+    for instruction in matches:
+        total += int(instruction[0])*int(instruction[1])
+        
+        
 
 
-print(InputLines)
+    
 
-reports = []
-for line in InputLines:
-    report = [int(i) for i in line.split()]
-    reports.append(report)
-
-def ordered(report:list):
-    return any([report == sorted(report), report == sorted(report, reverse=True)])
-
-def differ(report:list):
-    for i in range(len(report)):
-        try:
-            a, b = report[i:i+2]
-            if abs(a-b) not in [1,2,3]:
-                return False
-        except ValueError:
-            break
-    return True
-
-safeReports = 0
-for report in reports:
-    if ordered(report) and differ(report):
-        safeReports+=1
-
-print(f"{day}-1: There are {safeReports} safe reports in the total list of reports.")
+print(f"{day}-1: the sum of all multiplications is {total}")
 
 # ============================================================================#
 # Part Two....................................................................#
