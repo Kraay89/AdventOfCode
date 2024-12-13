@@ -1,8 +1,11 @@
 from PuzzleTools import Tools
+import datetime, re
+
+def runAdventOfCode():
+    pass
 
 if __name__=="__main__":
     today=Tools.getToday()
-    
-    print(Tools.getPuzzleFiles())
-    print(Tools.getInputFiles())
+    runAdventOfCode()
+
     
