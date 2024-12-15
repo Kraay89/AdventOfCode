@@ -1,8 +1,9 @@
 import os
 from collections import Counter
+from pathlib import Path
 
 cwd = os.path.dirname(__file__)
-rel_path = "..\Inputs\Day1.txt"
+rel_path = Path(cwd) / "Inputs" / "Day1.txt"
 ListLeft = []
 ListRight= []
 
